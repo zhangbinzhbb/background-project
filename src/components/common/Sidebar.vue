@@ -1,5 +1,6 @@
 <template>
     <div class="sidebar">
+        <!-- 是否使用 vue-router 的模式，启用该模式会在激活导航时以 index 作为 path 进行路由跳转  :default-active="onRoutes"-->
         <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse" background-color="#324157"
             text-color="#bfcbd9" active-text-color="#20a0ff" unique-opened router>
             <template v-for="item in items">
@@ -93,11 +94,12 @@
         },
         computed:{
             onRoutes(){
+                console.log('path---',this.$route.path.replace('/',''))
                 return this.$route.path.replace('/','');
             }
         },
         created(){
-            // 通过 Event Bus 进行组件间通信，来折叠侧边栏
+            //通过 Event Bus 进行组件间通信，来折叠侧边栏
             bus.$on('collapse', msg => {
                 this.collapse = msg;
             })

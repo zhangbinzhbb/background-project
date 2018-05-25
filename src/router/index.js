@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 
+//异步加载路由组件
 export default new Router({
     routes: [
         {

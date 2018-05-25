@@ -23,8 +23,8 @@
         data: function(){
             return {
                 ruleForm: {
-                    username: 'admin',
-                    password: '123123'
+                    username: '',
+                    password: ''
                 },
                 rules: {
                     username: [
@@ -38,7 +38,11 @@
         },
         methods: {
             submitForm(formName) {
+                console.log('formData',formName)
+                console.log("username",this.ruleForm.username)
+                console.log("password",this.ruleForm.password)
                 this.$refs[formName].validate((valid) => {
+                    //验证通过，请求登录
                     if (valid) {
                         localStorage.setItem('ms_username',this.ruleForm.username);
                         this.$router.push('/');
@@ -46,6 +50,7 @@
                         console.log('error submit!!');
                         return false;
                     }
+
                 });
             }
         }
